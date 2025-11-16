@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단 챗봇</title>
+    {# 정적 CSS 파일 링크 #}
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        {# 채팅 메시지가 표시될 영역 #}
+        <div id="chatbox">
+            <div class="message bot-message">
+                <p>안녕하세요! 무엇을 도와드릴까요?</p>
+            </div>
+        </div>
+        {# 사용자 입력 영역 #}
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="메시지를 입력하세요..." autocomplete="off">
+            <button type="submit" id="send-button">전송</button>
+            {# 중지 버튼 위치 - 초기에는 숨김 #}
+            <button type="button" id="stop-button" class="stop-button hidden">생성 중지</button>
+        </form>
+    </div>
+
+    {# 정적 JavaScript 파일 링크 #}
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,19 @@
+fastapi
+uvicorn[standard]
+# torch # Dockerfile에서 GPU 버전으로 설치하므로 제거
+transformers>=4.33.0
+torch>=2.0.1
+accelerate
+pydantic
+python-dotenv # .keyfile 로드를 위해 다시 추가
+# python-dotenv # .keyfile 사용으로 제거 
+numpy<2.0 # PyTorch 2.1.2 호환성을 위해 버전 제한 추가 
+jinja2 # 웹 인터페이스 템플릿 엔진
+httpx # 비동기 HTTP 요청 (선택 사항, 필요시 main.py에서 사용) 
+requests
+# Jinja2 for templating (usually included with fastapi[all] or uvicorn[standard])
+jinja2
+# Pydantic is a dependency of FastAPI
+# Optional: for colored logging, install 'coloredlogs'
+coloredlogs
+pytz # pytz 추가 

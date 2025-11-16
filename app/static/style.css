@@ -1,0 +1,192 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 80%;
+    max-width: 600px;
+    height: 90vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatbox {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 기본 메시지 스타일 */
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    word-wrap: break-word; /* 긴 단어 줄바꿈 */
+    line-height: 1.4; /* 줄 간격 개선 */
+}
+
+.message p {
+    margin: 0;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end; /* 오른쪽 정렬 */
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background-color: #e9e9eb;
+    color: #333;
+    align-self: flex-start; /* 왼쪽 정렬 */
+    border-bottom-left-radius: 5px;
+    font-size: 0.95rem; /* 봇 메시지 글자 크기 */
+}
+
+.error-message {
+    background-color: #f8d7da; /* 빨간색 배경 */
+    color: #721c24; /* 어두운 빨간색 텍스트 */
+    border: 1px solid #f5c6cb; /* 연한 빨간색 테두리 */
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.loading-message {
+    font-style: italic;
+    color: #666;
+    align-self: flex-start;
+}
+
+/* 마크다운 스타일 */
+.bot-message h1 {
+    font-size: 1.4rem;
+    margin: 0.7rem 0 0.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+}
+
+.bot-message h2 {
+    font-size: 1.2rem;
+    margin: 0.6rem 0 0.4rem;
+}
+
+.bot-message h3 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.3rem;
+}
+
+.bot-message p {
+    margin: 0.5rem 0;
+}
+
+.bot-message ul, .bot-message ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.bot-message li {
+    margin: 0.2rem 0;
+}
+
+.bot-message code {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.bot-message pre {
+    background-color: #f5f5f5;
+    padding: 0.8rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+}
+
+.bot-message pre code {
+    background-color: transparent;
+    padding: 0;
+    display: block;
+    line-height: 1.5;
+}
+
+.bot-message strong {
+    font-weight: bold;
+}
+
+.bot-message em {
+    font-style: italic;
+}
+
+#message-form {
+    display: flex;
+    padding: 15px;
+    background-color: #f8f9fa;
+    align-items: center; /* 버튼과 입력창 수직 정렬 */
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+#message-form button {
+    padding: 10px 15px; /* 패딩 조정 */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem; /* 폰트 크기 약간 줄임 */
+    transition: background-color 0.2s ease;
+    margin-left: 5px; /* 버튼 간 간격 */
+}
+
+#message-form button:hover {
+    background-color: #0056b3;
+}
+
+#message-form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* 중지 버튼 특정 스타일 */
+.stop-button {
+    background-color: #dc3545;
+}
+
+.stop-button:hover {
+    background-color: #bd2130;
+}
+
+/* 버튼 숨김 클래스 */
+.hidden {
+    display: none;
+}
+
+/* 생성 중지 메시지 스타일 */
+.bot-message em {
+    font-style: italic;
+    color: #6c757d;
+} 

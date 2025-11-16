@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8850:8000"
+    volumes:
+      # 개발 편의를 위해 로컬 app 코드를 마운트하여 컨테이너 재빌드를 최소화
+      - ./app:/code/app
+      # Hugging Face 모델 캐시를 마운트하여 모델 다운로드 시간을 절약 (경로 형식 변경)
+      - /c/Users/hangy/.cache/huggingface/hub:/code/.cache/huggingface
+      # pip 캐시를 마운트하여 패키지 설치 시간을 줄임 (경로 형식 변경 가능성)
+      - /c/Users/hangy/.cache/pip:/root/.cache/pip # pip 캐시 경로도 사용자 홈 밑에 있다면 동일하게 변경 고려
+    environment:
+      - HF_HOME=/code/.cache/huggingface
+      - TRANSFORMERS_CACHE=/code/.cache/huggingface
+    # 컨테이너 실행 시에 실행할 명령
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # 사용할 GPU 개수 (또는 'all')
+              capabilities: [gpu]
+    # 추가적인 환경 변수가 필요하다면 여기에 설정 (선택사항)
+    # environment:
+    #   - ADDITIONAL_ENV_VAR=value 
